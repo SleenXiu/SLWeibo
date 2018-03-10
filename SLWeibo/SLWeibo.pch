@@ -1,0 +1,19 @@
+//
+//  SLWeibo.pch
+//  SLWeibo
+//
+//  Created by Sleen Xiu on 2018/3/11.
+//  Copyright © 2018年 cn.Xsoft. All rights reserved.
+//
+
+#ifndef SLWeibo_pch
+#define SLWeibo_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <UIImageView+WebCache.h>
+#import <AFNetworking.h>
+#import <MJRefresh.h>
+#import <MJExtension.h>
+
+#endif /* SLWeibo_pch */
