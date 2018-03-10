@@ -34,10 +34,8 @@
         self.window.rootViewController = [[SLAuthorController alloc] init];
     }
     
-    
     // 主窗口并显示
     [self.window makeKeyAndVisible];
-    
     
     return YES;
 }
