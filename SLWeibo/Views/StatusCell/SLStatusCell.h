@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #define SLColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
-@class SLStatusFrame;
+@class SLStatusCard;
 @interface SLStatusCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tableView;
-@property (nonatomic, strong) SLStatusFrame *statusFrame;
+@property (nonatomic, strong) SLStatusCard *statusCard;
 @end

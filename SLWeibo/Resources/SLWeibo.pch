@@ -16,4 +16,6 @@
 #import <MJRefresh.h>
 #import <MJExtension.h>
 
+#import "SLWeiboApiTool.h"
+
 #endif /* SLWeibo_pch */

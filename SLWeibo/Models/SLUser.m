@@ -9,5 +9,7 @@
 #import "SLUser.h"
 
 @implementation SLUser
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"id":@"ID", @"description":@"desc"};
+}
 @end

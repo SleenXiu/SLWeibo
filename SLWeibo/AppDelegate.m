@@ -28,11 +28,11 @@
     // 先判断有无存储账号信息
     SLAccount *account = [SLAccountTool account];
     
-    if (account) { // 之前登录成功
+//    if (account) { // 之前登录成功
         [SLWeiboTool chooseRootController];
-    } else { // 之前没有登录成功
-        self.window.rootViewController = [[SLAuthorController alloc] init];
-    }
+//    } else { // 之前没有登录成功
+//        self.window.rootViewController = [[SLAuthorController alloc] init];
+//    }
     
     // 主窗口并显示
     [self.window makeKeyAndVisible];

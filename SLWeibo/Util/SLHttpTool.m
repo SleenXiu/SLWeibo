@@ -7,73 +7,53 @@
 //
 
 #import "SLHttpTool.h"
-#import "AFNetworking.h"
 
+static AFHTTPSessionManager *_manager;
 @implementation SLHttpTool
-
-+ (void)postWithURL:(NSString *)url params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure
-{
-//    // 1.创建请求管理对象
-//    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-//    
-//    // 2.发送请求
-//    [mgr POST:url parameters:params
-//      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//          if (success) {
-//              success(responseObject);
-//          }
-//      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//          if (failure) {
-//              failure(error);
-//          }
-//      }];
++ (AFHTTPSessionManager *)getManager {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _manager = [AFHTTPSessionManager manager];
+        [_manager.requestSerializer setTimeoutInterval:30];
+//        [_manager.requestSerializer setValue: forHTTPHeaderField:];
+    });
+    return _manager;
+}
++ (void)GET:(NSString *)url params:(NSDictionary *)params success:(SLRequestSuccess)success failure:(SLRequestFailure)failure {
+    AFHTTPSessionManager *manager = [self getManager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        !success ? : success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        !failure ? : failure(error);
+    }];
 }
 
-+ (void)postWithURL:(NSString *)url params:(NSDictionary *)params formDataArray:(NSArray *)formDataArray success:(void (^)(id))success failure:(void (^)(NSError *))failure
-{
-//    // 1.创建请求管理对象
-//    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-//    
-//    // 2.发送请求
-//    [mgr POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> totalFormData) {
-//        for (SLFormData *formData in formDataArray) {
-//            [totalFormData appendPartWithFileData:formData.data name:formData.name fileName:formData.filename mimeType:formData.mimeType];
-//        }
-//    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        if (success) {
-//            success(responseObject);
-//        }
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        if (failure) {
-//            failure(error);
-//        }
-//    }];
++ (void)POST:(NSString *)url params:(NSDictionary *)params success:(SLRequestSuccess)success failure:(SLRequestFailure)failure {
+    AFHTTPSessionManager *manager = [self getManager];
+    [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        !success ? : success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        !failure ? : failure(error);
+    }];
 }
-
-+ (void)getWithURL:(NSString *)url params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure
-{
-//    // 1.创建请求管理对象
-//    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-//    
-//    // 2.发送请求
-//    [mgr GET:url parameters:params
-//      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//          if (success) {
-//              success(responseObject);
-//          }
-//      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//          if (failure) {
-//              failure(error);
-//          }
-//      }];
++ (void)PATCH:(NSString *)url params:(NSDictionary *)params success:(SLRequestSuccess)success failure:(SLRequestFailure)failure {
+    AFHTTPSessionManager *manager = [self getManager];
+    [manager PATCH:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        !success ? : success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        !failure ? : failure(error);
+    }];
 }
-
++ (void)DELETE:(NSString *)url params:(NSDictionary *)params success:(SLRequestSuccess)success failure:(SLRequestFailure)failure {
+    AFHTTPSessionManager *manager = [self getManager];
+    [manager DELETE:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        !success ? : success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        !failure ? : failure(error);
+    }];
+}
 
 @end
 
-/**
- *  用来封装文件数据的模型
- */
-@implementation SLFormData
 
-@end

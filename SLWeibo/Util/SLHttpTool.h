@@ -8,63 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
+@class SLHttpError, SLHttpListResponse, SLHttpDictResponse;
+typedef void (^SLRequestSuccess)(id json);
+typedef void (^SLRequestFailure)(NSError *error);
+
 @interface SLHttpTool : NSObject
 
++ (AFHTTPSessionManager *)getManager;
 /**
- *  发送一个POST请求
- *
- *  @param url     请求路径
- *  @param params  请求参数
- *  @param success 请求成功后的回调
- *  @param failure 请求失败后的回调
+ *  GET请求
  */
-+ (void)postWithURL:(NSString *)url params:(NSDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure;
-
++ (void)GET:(NSString *)url params:(NSDictionary *)params success:(SLRequestSuccess)success failure:(SLRequestFailure)failure;
 /**
- *  发送一个POST请求(上传文件数据)
- *
- *  @param url     请求路径
- *  @param params  请求参数
- *  @param formData  文件参数
- *  @param success 请求成功后的回调
- *  @param failure 请求失败后的回调
+ *  POST请求
  */
-+ (void)postWithURL:(NSString *)url params:(NSDictionary *)params formDataArray:(NSArray *)formDataArray success:(void (^)(id json))success failure:(void (^)(NSError *error))failure;
-
++ (void)POST:(NSString *)url params:(NSDictionary *)params success:(SLRequestSuccess)success failure:(SLRequestFailure)failure;
 /**
- *  发送一个GET请求
- *
- *  @param url     请求路径
- *  @param params  请求参数
- *  @param success 请求成功后的回调
- *  @param failure 请求失败后的回调
+ *  PATCH请求
  */
-+ (void)getWithURL:(NSString *)url params:(NSDictionary *)params success:(void (^)(id json))success failure:(void (^)(NSError *error))failure;
-
-@end
-
-
++ (void)PATCH:(NSString *)url params:(NSDictionary *)params success:(SLRequestSuccess)success failure:(SLRequestFailure)failure;
 /**
- *  用来封装文件数据的模型
+ *  DELETE请求
  */
-@interface SLFormData : NSObject
-/**
- *  文件数据
- */
-@property (nonatomic, strong) NSData *data;
++ (void)DELETE:(NSString *)url params:(NSDictionary *)params success:(SLRequestSuccess)success failure:(SLRequestFailure)failure;
 
-/**
- *  参数名
- */
-@property (nonatomic, copy) NSString *name;
-
-/**
- *  文件名
- */
-@property (nonatomic, copy) NSString *filename;
-
-/**
- *  文件类型
- */
-@property (nonatomic, copy) NSString *mimeType;
 @end

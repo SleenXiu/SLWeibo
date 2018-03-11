@@ -246,38 +246,7 @@
 {
     
     
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
     
-    // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"status"] = self.textView.text;
-    params[@"access_token"] = [SLAccountTool account].access_token;
-    
-    // 2.封装文件参数
-    NSMutableArray *formDataArray = [NSMutableArray array];
-    NSArray *images = [self.photosView totalImages];
-    for (UIImage *image in images) {
-        SLFormData *formData = [[SLFormData alloc] init];
-        formData.data = UIImageJPEGRepresentation(image, 0.000001);
-        formData.name = @"pic";
-        formData.mimeType = @"image/jpeg";
-        formData.filename = @"";
-        [formDataArray addObject:formData];
-    }
-    
-    
-   
-    [mgr POST:@"https://api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        for (SLFormData *formDatadd in formDataArray) {
-            [formData appendPartWithFileData:formDatadd.data name:formDatadd.name fileName:formDatadd.filename mimeType:formDatadd.mimeType];
-        }
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
 }
 
 /**
@@ -285,23 +254,6 @@
  */
 - (void)sendWithoutImage
 {
-    // 1.创建请求管理对象
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
-    
-    
-    // 1.封装请求参数
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"status"] = self.textView.text;
-    params[@"access_token"] = [SLAccountTool account].access_token;
-    
-    // 2.发送请求
-    [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
     
 }
 @end

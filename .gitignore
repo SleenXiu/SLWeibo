@@ -25,4 +25,5 @@ xcuserdata/
 *.dSYM
 
 Pods/
+Podfile.lock
 
