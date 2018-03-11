@@ -25,13 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    // 集成刷新
-//    [self setupRefresh];
-    
-    
-    // 设置nav的item
-    [self.view addSubview:self.tableView];
-    [self loadData];
+//    // 集成刷新
+////    [self setupRefresh];
+//    
+//    
+//    // 设置nav的item
+//    [self.view addSubview:self.tableView];
+//    [self loadData];
 
     
 }

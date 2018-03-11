@@ -18,4 +18,7 @@
 
 #import "SLWeiboApiTool.h"
 
+#define kSLTabBarHeight 40
+#define kSLScreenWidth [UIScreen mainScreen].bounds.size.width
+
 #endif /* SLWeibo_pch */

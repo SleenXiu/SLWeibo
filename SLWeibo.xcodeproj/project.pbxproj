@@ -52,6 +52,7 @@
 		B1B520322054431A00B6F9B8 /* SDWebImageManager+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B5202A2054431A00B6F9B8 /* SDWebImageManager+MJ.m */; };
 		B1B520332054431A00B6F9B8 /* MJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B5202B2054431A00B6F9B8 /* MJPhotoBrowser.m */; };
 		B1B520382054433B00B6F9B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B520372054433A00B6F9B8 /* AppDelegate.m */; };
+		B1B5203B2055744400B6F9B8 /* UITabBar+Fix.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B5203A2055744400B6F9B8 /* UITabBar+Fix.m */; };
 		B1D1B0022054CB7B004C0FB6 /* SLWeiboApiTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1B0012054CB7B004C0FB6 /* SLWeiboApiTool.m */; };
 		B1D1B0052054D5A2004C0FB6 /* SLStatusCard.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1B0042054D5A2004C0FB6 /* SLStatusCard.m */; };
 /* End PBXBuildFile section */
@@ -145,6 +146,8 @@
 		B1B5202B2054431A00B6F9B8 /* MJPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoBrowser.m; sourceTree = "<group>"; };
 		B1B520362054433A00B6F9B8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B1B520372054433A00B6F9B8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B1B520392055744400B6F9B8 /* UITabBar+Fix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBar+Fix.h"; sourceTree = "<group>"; };
+		B1B5203A2055744400B6F9B8 /* UITabBar+Fix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+Fix.m"; sourceTree = "<group>"; };
 		B1D1B0002054CB7B004C0FB6 /* SLWeiboApiTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLWeiboApiTool.h; sourceTree = "<group>"; };
 		B1D1B0012054CB7B004C0FB6 /* SLWeiboApiTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLWeiboApiTool.m; sourceTree = "<group>"; };
 		B1D1B0032054D5A2004C0FB6 /* SLStatusCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLStatusCard.h; sourceTree = "<group>"; };
@@ -390,6 +393,8 @@
 				B16DE39A1C397D1F007D300C /* SLTabBarButton.m */,
 				B13A22661C39DB3D00E2EF71 /* SLBadgeButton.h */,
 				B13A22671C39DB3D00E2EF71 /* SLBadgeButton.m */,
+				B1B520392055744400B6F9B8 /* UITabBar+Fix.h */,
+				B1B5203A2055744400B6F9B8 /* UITabBar+Fix.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -562,10 +567,10 @@
 		B1B520352054433000B6F9B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B16DE3721C3970B0007D300C /* Main */,
 				B139E48B1C53A10F002013E5 /* Compose */,
 				B13B3B3D1C3AAD1100B0194A /* Author */,
 				B13A22781C3A1E4500E2EF71 /* NewPart */,
-				B16DE3721C3970B0007D300C /* Main */,
 				B16DE36E1C3970B0007D300C /* Home */,
 				B16DE3681C3970B0007D300C /* Discover */,
 				B16DE3781C3970B0007D300C /* Me */,
@@ -697,7 +702,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -752,6 +757,7 @@
 				B13A22741C3A167300E2EF71 /* SLTitleBtn.m in Sources */,
 				B1B520332054431A00B6F9B8 /* MJPhotoBrowser.m in Sources */,
 				B1B520322054431A00B6F9B8 /* SDWebImageManager+MJ.m in Sources */,
+				B1B5203B2055744400B6F9B8 /* UITabBar+Fix.m in Sources */,
 				B16DE3901C397124007D300C /* SLHomeViewController.m in Sources */,
 				B1454FBE1C894B6300878914 /* SLSetController.m in Sources */,
 			);

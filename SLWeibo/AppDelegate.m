@@ -11,6 +11,7 @@
 #import "SLAccount.h"
 #import "SLWeiboTool.h"
 #import "SLAccountTool.h"
+#import "SLTabBarController.h"
 @interface AppDelegate ()
 
 @end
@@ -22,19 +23,9 @@
  
     // 创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    self.window.rootViewController = [[SLTabBarController alloc] init];
     // 成为主窗口并且显示出来
-    [self.window makeKeyAndVisible];
-    
-    // 先判断有无存储账号信息
-    SLAccount *account = [SLAccountTool account];
-    
-//    if (account) { // 之前登录成功
-        [SLWeiboTool chooseRootController];
-//    } else { // 之前没有登录成功
-//        self.window.rootViewController = [[SLAuthorController alloc] init];
-//    }
-    
-    // 主窗口并显示
     [self.window makeKeyAndVisible];
     
     return YES;

@@ -24,9 +24,9 @@
         
         self.imageView.contentMode = UIViewContentModeCenter;
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [self.titleLabel setFont:[UIFont systemFontOfSize:13]];
+        [self.titleLabel setFont:[UIFont systemFontOfSize:10]];
         
-        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
         
         
@@ -63,8 +63,8 @@
 - (CGRect)imageRectForContentRect:(CGRect)contentRect
 {
     CGFloat imageW = contentRect.size.width;
-    CGFloat imageH = contentRect.size.height * SLTabBarButtonImageRatio;
-    return CGRectMake(0, 0, imageW, imageH);
+    CGFloat imageH = contentRect.size.height * SLTabBarButtonImageRatio-2;
+    return CGRectMake(0, 2, imageW, imageH);
 }
 
 // 内部文字的frame
