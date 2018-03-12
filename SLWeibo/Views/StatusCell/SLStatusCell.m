@@ -9,7 +9,17 @@
 #import "SLStatusCell.h"
 #import "SLStatusCard.h"
 #import "SLStatus.h"
+
+
+@implementation SLStatusCellTopView
+@end
+
+@implementation SLStatusCellContentView
+@end
+
+
 @interface SLStatusCell()
+
 @end
 
 @implementation SLStatusCell
@@ -28,26 +38,26 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // 1.添加顶部的view
-        [self setupTopView];
-        
+        self.selectedBackgroundView = [[UIView alloc] init];
+        self.backgroundColor = [UIColor clearColor];
+        [self.contentView addSubview:self.statusView];
     }
     return self;
 }
 
-- (void)setupTopView {
-    // 0.设置cell选中时的背景
-    self.selectedBackgroundView = [[UIView alloc] init];
-    self.backgroundColor = [UIColor clearColor];
-    
-    /** 1.顶部的view */
-    
-}
+
 - (void)setStatusCard:(SLStatusCard *)statusCard {
     _statusCard = statusCard;
     
     SLStatus *status = statusCard.mblog;
     self.textLabel.text = status.text;
 }
-
+#pragma mark - getter
+- (SLStatusCellContentView *)statusView {
+    if (!_statusView) {
+        _statusView = [[SLStatusCellContentView alloc] init];
+        _statusView.backgroundColor = [UIColor whiteColor];
+    }
+    return _statusView;
+}
 @end
