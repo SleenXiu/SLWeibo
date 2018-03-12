@@ -56,6 +56,9 @@
 		B1B5203E20557A4D00B6F9B8 /* SLStatusLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B5203D20557A4D00B6F9B8 /* SLStatusLayout.m */; };
 		B1D1B0022054CB7B004C0FB6 /* SLWeiboApiTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1B0012054CB7B004C0FB6 /* SLWeiboApiTool.m */; };
 		B1D1B0052054D5A2004C0FB6 /* SLStatusCard.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1B0042054D5A2004C0FB6 /* SLStatusCard.m */; };
+		B1D1B0122056491D004C0FB6 /* NSArray+SL.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1B0112056491D004C0FB6 /* NSArray+SL.m */; };
+		B1D1B0152056492A004C0FB6 /* NSDictionary+SL.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1B0142056492A004C0FB6 /* NSDictionary+SL.m */; };
+		B1D1B01720568C3C004C0FB6 /* unread_hot_timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = B1D1B01620568C3C004C0FB6 /* unread_hot_timeline.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +158,11 @@
 		B1D1B0012054CB7B004C0FB6 /* SLWeiboApiTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLWeiboApiTool.m; sourceTree = "<group>"; };
 		B1D1B0032054D5A2004C0FB6 /* SLStatusCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLStatusCard.h; sourceTree = "<group>"; };
 		B1D1B0042054D5A2004C0FB6 /* SLStatusCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLStatusCard.m; sourceTree = "<group>"; };
+		B1D1B0102056491D004C0FB6 /* NSArray+SL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+SL.h"; sourceTree = "<group>"; };
+		B1D1B0112056491D004C0FB6 /* NSArray+SL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SL.m"; sourceTree = "<group>"; };
+		B1D1B0132056492A004C0FB6 /* NSDictionary+SL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SL.h"; sourceTree = "<group>"; };
+		B1D1B0142056492A004C0FB6 /* NSDictionary+SL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SL.m"; sourceTree = "<group>"; };
+		B1D1B01620568C3C004C0FB6 /* unread_hot_timeline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = unread_hot_timeline.json; sourceTree = "<group>"; };
 		BEBD1931C0DD20D5A1F10DF0 /* Pods-SLWeibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLWeibo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SLWeibo/Pods-SLWeibo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -473,6 +481,7 @@
 		B1B52001205442D800B6F9B8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B1D1B01620568C3C004C0FB6 /* unread_hot_timeline.json */,
 				B1B52002205442D800B6F9B8 /* SLWeibo.pch */,
 				B1B52003205442D800B6F9B8 /* Assets.xcassets */,
 				B1B52004205442D800B6F9B8 /* main.m */,
@@ -485,6 +494,8 @@
 			isa = PBXGroup;
 			children = (
 				B1B5200A205442FC00B6F9B8 /* Categories */,
+				B1B52010205442FC00B6F9B8 /* SLWeiboTool.h */,
+				B1B5200C205442FC00B6F9B8 /* SLWeiboTool.m */,
 				B102CD261C3BEDEA00132E55 /* SLAccountTool.h */,
 				B102CD271C3BEDEA00132E55 /* SLAccountTool.m */,
 				B139E49B1C53B2CF002013E5 /* SLHttpTool.h */,
@@ -498,16 +509,18 @@
 		B1B5200A205442FC00B6F9B8 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				B1B5200B205442FC00B6F9B8 /* UIBarButtonItem+SL.h */,
-				B1B5200C205442FC00B6F9B8 /* SLWeiboTool.m */,
-				B1B5200D205442FC00B6F9B8 /* NSString+SL.m */,
-				B1B5200E205442FC00B6F9B8 /* UIImage+SL.h */,
 				B1B5200F205442FC00B6F9B8 /* NSDate+MJ.h */,
-				B1B52010205442FC00B6F9B8 /* SLWeiboTool.h */,
-				B1B52011205442FC00B6F9B8 /* UIBarButtonItem+SL.m */,
-				B1B52012205442FC00B6F9B8 /* NSString+SL.h */,
 				B1B52013205442FC00B6F9B8 /* NSDate+MJ.m */,
+				B1B52012205442FC00B6F9B8 /* NSString+SL.h */,
+				B1B5200D205442FC00B6F9B8 /* NSString+SL.m */,
+				B1B5200B205442FC00B6F9B8 /* UIBarButtonItem+SL.h */,
+				B1B52011205442FC00B6F9B8 /* UIBarButtonItem+SL.m */,
+				B1B5200E205442FC00B6F9B8 /* UIImage+SL.h */,
 				B1B52014205442FC00B6F9B8 /* UIImage+SL.m */,
+				B1D1B0102056491D004C0FB6 /* NSArray+SL.h */,
+				B1D1B0112056491D004C0FB6 /* NSArray+SL.m */,
+				B1D1B0132056492A004C0FB6 /* NSDictionary+SL.h */,
+				B1D1B0142056492A004C0FB6 /* NSDictionary+SL.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -657,6 +670,7 @@
 				B1B5202E2054431A00B6F9B8 /* MJPhotoBrowser.bundle in Resources */,
 				B1B52008205442D900B6F9B8 /* Info.plist in Resources */,
 				B1B52006205442D900B6F9B8 /* Assets.xcassets in Resources */,
+				B1D1B01720568C3C004C0FB6 /* unread_hot_timeline.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,7 +721,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -728,6 +742,7 @@
 				B139E4911C53A142002013E5 /* SLComposeViewController.m in Sources */,
 				B16DE39B1C397D1F007D300C /* SLTabBarButton.m in Sources */,
 				B102CD2B1C3BF2B100132E55 /* SLStatus.m in Sources */,
+				B1D1B0122056491D004C0FB6 /* NSArray+SL.m in Sources */,
 				B1B52007205442D900B6F9B8 /* main.m in Sources */,
 				B1B52018205442FC00B6F9B8 /* NSDate+MJ.m in Sources */,
 				B11E31DE1C43EA9A00CDB5A4 /* SLPhotosView.m in Sources */,
@@ -764,6 +779,7 @@
 				B1B520332054431A00B6F9B8 /* MJPhotoBrowser.m in Sources */,
 				B1B520322054431A00B6F9B8 /* SDWebImageManager+MJ.m in Sources */,
 				B1B5203B2055744400B6F9B8 /* UITabBar+Fix.m in Sources */,
+				B1D1B0152056492A004C0FB6 /* NSDictionary+SL.m in Sources */,
 				B16DE3901C397124007D300C /* SLHomeViewController.m in Sources */,
 				B1454FBE1C894B6300878914 /* SLSetController.m in Sources */,
 			);

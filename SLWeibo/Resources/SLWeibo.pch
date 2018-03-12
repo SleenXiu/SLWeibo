@@ -18,7 +18,12 @@
 
 #import "SLWeiboApiTool.h"
 
+#import "NSArray+SL.h"
+#import "NSDictionary+SL.h"
+
 #define kSLTabBarHeight 40
 #define kSLScreenWidth [UIScreen mainScreen].bounds.size.width
+
+#define kSLFont(size) [UIFont systemFontOfSize:size]
 
 #endif /* SLWeibo_pch */

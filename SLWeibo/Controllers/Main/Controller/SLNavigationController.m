@@ -29,7 +29,7 @@
     // 设置标题属性
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
     textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor]; // 文字颜色
-    textAttrs[NSFontAttributeName] = [UIFont boldSystemFontOfSize:19]; // 文字字体
+    textAttrs[NSFontAttributeName] = kSLFont(18); // 文字字体
     [bar setTitleTextAttributes:textAttrs];
 }
 // 设置按钮的主题

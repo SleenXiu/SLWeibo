@@ -10,4 +10,5 @@
 
 @interface SLWeiboTool : NSObject
 + (void)chooseRootController;
+
 @end

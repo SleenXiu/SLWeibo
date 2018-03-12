@@ -15,8 +15,9 @@
 #import "SLStatus.h"
 #import "SLStatusCell.h"
 #import "SLStatusCard.h"
+#import "SLStatusLayout.h"
 @interface SLHomeViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) NSMutableArray *cards;
+@property (nonatomic, strong) NSMutableArray *statusLayout;
 @property (nonatomic, strong) UITableView *tableView;
 @end
 
@@ -36,29 +37,46 @@
     
 }
 - (void)loadData {
-    [SLWeiboApiTool getHotWeiboWithParam:@{@"param":@(1)} success:^(NSDictionary *result) {
-        NSArray *tmpCardsArr = result[@"data"][@"cards"];
-        self.cards = [SLStatusCard mj_objectArrayWithKeyValuesArray:tmpCardsArr];
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
+    
+    [SLWeiboApiTool test_getHotTimeLineWithParam:@{} success:^(NSDictionary *result) {
+
+        NSArray *tmpStatusArr = [SLStatus mj_objectArrayWithKeyValuesArray:result[@"statuses"]];
+        NSLog(@"%@",result);
+        NSLog(@"%zd",tmpStatusArr.count);
+        NSMutableArray *tmpLayouts = [NSMutableArray array];
+        for (SLStatus *status in tmpStatusArr) {
+            SLStatusLayout *layout = [SLStatusLayout statusLayoutWithStatus:status];
+            [tmpLayouts addObject:layout];
+        }
         
+        self.statusLayout = tmpLayouts;
+        
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
     }];
+    
 }
 #pragma mark - UITableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.cards.count;
+    return self.statusLayout.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SLStatusCell *cell = [SLStatusCell cellWithTableView:tableView];
-    cell.statusCard = self.cards[indexPath.row];
+    cell.statusLayout = self.statusLayout[indexPath.row];
     return cell;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SLStatusLayout *layout = self.statusLayout[indexPath.row];
+    return layout.cellHight;
+}
 #pragma mark - getter
-- (NSMutableArray *)cards {
-    if (!_cards) {
-        _cards = [NSMutableArray array];
+- (NSMutableArray *)statusLayout {
+    if (!_statusLayout) {
+        _statusLayout = [NSMutableArray array];
     }
-    return _cards;
+    return _statusLayout;
 }
 - (UITableView *)tableView {
     if (!_tableView) {
@@ -67,6 +85,7 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
         _tableView.delegate = self;
+//        _tableView.backgroundColor = ksl(EDEEEF)
     }
     return _tableView;
 }

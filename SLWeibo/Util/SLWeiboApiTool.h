@@ -11,4 +11,6 @@
 typedef void (^SLWeiboRequestSuccess)(NSDictionary *result);
 @interface SLWeiboApiTool : NSObject
 + (void)getHotWeiboWithParam:(NSDictionary *)param success:(SLWeiboRequestSuccess)success failure:(SLRequestFailure)failure;
+
++ (void)test_getHotTimeLineWithParam:(NSDictionary *)param success:(SLWeiboRequestSuccess)success failure:(SLRequestFailure)failure;
 @end

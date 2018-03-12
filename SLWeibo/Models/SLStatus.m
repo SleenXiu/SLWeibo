@@ -18,7 +18,14 @@
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"id":@"ID"};
 }
+@end
+
+@implementation SLStatusPageInfo
+@end
 
 
+@implementation SLStatusMediaInfo
+@end
 
+@implementation SLStatusTopic
 @end

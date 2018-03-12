@@ -15,4 +15,16 @@ NSString * const hotUrl = @"https://m.weibo.cn/api/container/getIndex?containeri
         !success?:success(json);
     } failure:failure];
 }
+
++ (void)test_getHotTimeLineWithParam:(NSDictionary *)param success:(SLWeiboRequestSuccess)success failure:(SLRequestFailure)failure {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"unread_hot_timeline" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSError *error = nil;
+    NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    if (error) {
+        failure(error);
+    } else {
+        success(result);
+    }
+}
 @end
