@@ -29,5 +29,6 @@
 #define kSLColorHex(hex) [UIColor sl_colorWithHexString:hex]
 
 #define kSLBackGroundColor [UIColor sl_colorWithHexString:@"EEEFF0"]
+#define kSLOrangeColor [UIColor sl_colorWithHexString:@"FC6321"]
 
 #endif /* SLWeibo_pch */

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <YYText.h>
 #define kSLStatusCellSpace_h 10.0
 #define kSLStatusCellAvatar_h 40.0
 #define kSLStatusCellPadding_t 15.0
@@ -37,6 +37,11 @@
 @property (nonatomic, strong) SLStatus *status;
 
 @property (nonatomic, assign) CGFloat textHeight;
+@property (nonatomic, strong) YYTextLayout *textLayout;
 @property (nonatomic, assign) CGFloat cellHight;
 
+@end
+
+@interface SLStatusTextPositionModifier : NSObject <YYTextLinePositionModifier>
+@property (assign) CGFloat fixedLineHeight;
 @end

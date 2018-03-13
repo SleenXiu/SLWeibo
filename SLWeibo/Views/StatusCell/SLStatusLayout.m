@@ -9,7 +9,6 @@
 #import "SLStatusLayout.h"
 #import "SLStatus.h"
 #import "SLPhotosView.h"
-#import <YYText.h>
 @implementation SLStatusLayout
 + (instancetype)statusLayoutWithStatus:(SLStatus *)status {
    return [[self alloc] initWithStatus:status];
@@ -30,8 +29,24 @@
     _cellHight += kSLStatusCellText_t;
     
     SLStatus *status = self.status;
-    _cellHight += [self sizeWithText:status.text andFont:kSLFont(kTextFontSize) maxWidth:kSLScreenWidth-2*kSLStatusCellPadding_lr].height;
-//    YYTextLayout *textLayout = [[YYTextLayout alloc] init];
+    
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = 6.0;
+    NSMutableAttributedString *temAstr = [[NSMutableAttributedString alloc] initWithString:self.status.text
+                                                                                attributes:@{}];
+//    temAstr.yy_lineSpacing = 6.0;
+    temAstr.yy_font = kSLFont(16);
+    
+    SLStatusTextPositionModifier *modifier = [[SLStatusTextPositionModifier alloc] init];
+    modifier.fixedLineHeight = 22;
+    
+    YYTextContainer *container = [YYTextContainer containerWithSize:CGSizeMake(kSLStatusCellContent_w, MAXFLOAT)];
+    container.linePositionModifier = modifier;
+    
+    _textLayout = [YYTextLayout layoutWithContainer:container text:temAstr];
+    _textHeight = _textLayout.textBoundingSize.height;
+    _cellHight += _textHeight;
+    
     
     
     
@@ -65,5 +80,31 @@
     label.attributedText = string;
     [label sizeThatFits:CGSizeMake(width, 100)];
     return label.bounds.size;
+}
+@end
+
+@implementation SLStatusTextPositionModifier
+- (void)modifyLines:(NSArray *)lines fromText:(NSAttributedString *)text inContainer:(YYTextContainer *)container {
+    if (container.verticalForm) {
+        for (NSUInteger i = 0, max = lines.count; i < max; i++) {
+            YYTextLine *line = lines[i];
+            CGPoint pos = line.position;
+            pos.x = container.size.width - container.insets.right - line.row * _fixedLineHeight - _fixedLineHeight * 0.9;
+            line.position = pos;
+        }
+    } else {
+        for (NSUInteger i = 0, max = lines.count; i < max; i++) {
+            YYTextLine *line = lines[i];
+            CGPoint pos = line.position;
+            pos.y = line.row * _fixedLineHeight + _fixedLineHeight * 0.6 + container.insets.top;
+            line.position = pos;
+        }
+    }
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    YYTextLinePositionSimpleModifier *one = [self.class new];
+    one.fixedLineHeight = _fixedLineHeight;
+    return one;
 }
 @end

@@ -43,9 +43,21 @@
     [self.timeLabel sizeToFit];
     
     if (status.source) {
-        self.sourceLabel.text = status.source;
+        NSMutableAttributedString *temStr = [[NSMutableAttributedString alloc] initWithString:status.source];
+        [temStr setAttributes:@{NSFontAttributeName:self.sourceLabel.font, NSForegroundColorAttributeName:self.sourceLabel.textColor}
+                        range:NSMakeRange(0, temStr.length)];
+        if (status.source_allowclick) {
+            [temStr setAttributes:@{NSFontAttributeName:self.sourceLabel.font, NSForegroundColorAttributeName:kSLOrangeColor}
+                            range:NSMakeRange(2, temStr.length-2)];
+        }
+        
+        YYTextContainer *container = [[YYTextContainer alloc] init];
+        YYTextLayout *layout = [YYTextLayout layoutWithContainer:container text:temStr];
+        self.sourceLabel.textLayout = layout;
+        self.sourceLabel.attributedText = temStr;
         [self.sourceLabel sizeToFit];
         self.sourceLabel.mj_x = self.timeLabel.mj_x+self.timeLabel.mj_w+4;
+        
     }
     
     NSLog(@"%@", NSStringFromCGRect(self.avatarView.frame));
@@ -69,7 +81,7 @@
         CGFloat x = kSLStatusCellPadding_lr + kSLStatusCellAvatar_h + 6;
         _nameLabel.frame = CGRectMake(x, 16, 0, 20);
         _nameLabel.font = kSLFont(kNameFontSize);
-        _nameLabel.textColor = kSLColorHex(@"FC6321");
+        _nameLabel.textColor = kSLOrangeColor;
     }
     return _nameLabel;
 }
@@ -83,9 +95,9 @@
     }
     return _timeLabel;
 }
-- (UILabel *)sourceLabel {
+- (YYLabel *)sourceLabel {
     if (!_sourceLabel) {
-        _sourceLabel = [[UILabel alloc] init];
+        _sourceLabel = [[YYLabel alloc] init];
         CGFloat x = kSLStatusCellPadding_lr + kSLStatusCellAvatar_h + 6;
         _sourceLabel.frame = CGRectMake(x, 36, 0, 0);
         _sourceLabel.font = kSLFont(12);
@@ -95,24 +107,31 @@
 }
 @end
 @implementation SLStatusCellCenterView
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
-        
+        [self addSubview:self.textLabel];
     }
     return self;
 }
 - (void)setStatusLayout:(SLStatusLayout *)statusLayout {
     _statusLayout = statusLayout;
     
+    SLStatus *status = statusLayout.status;
+    self.textLabel.textLayout = statusLayout.textLayout;
+    self.textLabel.mj_h = statusLayout.textHeight;
+    
+    
+    self.mj_h = statusLayout.textHeight;
 //    _textLabel.mj_h =
 }
 - (YYLabel *)textLabel {
     if (!_textLabel) {
         _textLabel = [[YYLabel alloc] init];
-        CGFloat top = kSLStatusCellPadding_t + kSLStatusCellAvatar_h + kSLStatusCellText_t;
-        _textLabel.frame = CGRectMake(kSLStatusCellPadding_lr, top, kSLStatusCellContent_w, 0);
+        _textLabel.frame = CGRectMake(kSLStatusCellPadding_lr, kSLStatusCellText_t, kSLStatusCellContent_w, 0);
+        _textLabel.textColor = [UIColor blackColor];
+        _textLabel.font = kSLFont(16);
+        _textLabel.numberOfLines = 0;
     }
     return _textLabel;
 }
@@ -150,6 +169,7 @@
 - (SLStatusCellCenterView *)centerView {
     if (!_centerView) {
         _centerView = [[SLStatusCellCenterView alloc] init];
+        _centerView.frame = CGRectMake(0, kSLStatusCellPadding_t + kSLStatusCellAvatar_h, kSLScreenWidth, 0);
     }
     return _centerView;
 }

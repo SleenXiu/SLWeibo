@@ -16,7 +16,7 @@
 @property (nonatomic, strong) UIImageView *bagdeView;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
-@property (nonatomic, strong) UILabel *sourceLabel;
+@property (nonatomic, strong) YYLabel *sourceLabel;
 
 @property (nonatomic, strong) SLStatus *status;
 @end
