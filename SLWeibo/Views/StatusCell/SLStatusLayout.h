@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#define kSLStatusCellSpace_h 10
+#define kSLStatusCellSpace_h 10.0
 #define kSLStatusCellAvatar_h 40.0
-#define kSLStatusCellPadding_t 14
+#define kSLStatusCellPadding_t 15.0
 #define kSLStatusCellPadding_lr 12
 #define kSLStatusCellMedia_t 8
 #define kSLStatusCellBar_t 12

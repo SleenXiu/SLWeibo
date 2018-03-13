@@ -80,12 +80,20 @@
 }
 - (UITableView *)tableView {
     if (!_tableView) {
-        CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        CGRect rect = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64);
         _tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
         _tableView.delegate = self;
-//        _tableView.backgroundColor = ksl(EDEEEF)
+        _tableView.backgroundColor = kSLBackGroundColor;
+        
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
+        
+        if (@available(iOS 11.0, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     return _tableView;
 }

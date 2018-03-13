@@ -10,6 +10,6 @@ target 'SLWeibo' do
   pod 'MJExtension', :inhibit_warnings => true
   pod 'MJRefresh', :inhibit_warnings => true
   pod 'AFNetworking', :inhibit_warnings => true
-  pod 'YYText'
+  pod 'YYText', :inhibit_warnings => true
 
 end

@@ -20,10 +20,14 @@
 
 #import "NSArray+SL.h"
 #import "NSDictionary+SL.h"
+#import "UIColor+SL.h"
 
 #define kSLTabBarHeight 40
 #define kSLScreenWidth [UIScreen mainScreen].bounds.size.width
 
 #define kSLFont(size) [UIFont systemFontOfSize:size]
+#define kSLColorHex(hex) [UIColor sl_colorWithHexString:hex]
+
+#define kSLBackGroundColor [UIColor sl_colorWithHexString:@"EEEFF0"]
 
 #endif /* SLWeibo_pch */
