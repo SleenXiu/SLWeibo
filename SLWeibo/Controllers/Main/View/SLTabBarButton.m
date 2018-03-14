@@ -26,8 +26,8 @@
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self.titleLabel setFont:[UIFont systemFontOfSize:10]];
         
-        [self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+        [self setTitleColor:kSLColorHex(@"323334") forState:UIControlStateNormal];
+//        [self setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
         
         
         
@@ -37,8 +37,7 @@
         [self addSubview:badgeButton];
         self.badgeButton = badgeButton;
         
-        
-        
+    
     }
     return self;
 }
@@ -60,11 +59,11 @@
 - (void)setHighlighted:(BOOL)highlighted {}
 
 // 内部图片的frame
-- (CGRect)imageRectForContentRect:(CGRect)contentRect
-{
+- (CGRect)imageRectForContentRect:(CGRect)contentRect {
+    
     CGFloat imageW = contentRect.size.width;
-    CGFloat imageH = contentRect.size.height * SLTabBarButtonImageRatio-2;
-    return CGRectMake(0, 2, imageW, imageH);
+    CGFloat imageH = contentRect.size.height * 30 / 44.0;
+    return CGRectMake(0, 0, imageW, imageH);
 }
 
 // 内部文字的frame

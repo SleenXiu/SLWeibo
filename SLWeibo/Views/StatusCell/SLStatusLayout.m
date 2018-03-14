@@ -67,20 +67,48 @@
     
     
 }
-- (NSAttributedString *)_fixTextWithStatus:(SLStatus *)status fontSize:(CGFloat) fontSize textColor:(UIColor *)textColor {
-    NSMutableString *string = status.text.copy;
-    
-    UIFont *font = kSLFont(fontSize);
-    
-    YYTextBorder *highlightBorder = [[YYTextBorder alloc] init];
-    highlightBorder.insets = UIEdgeInsetsMake(-2, 0, -2, 0);
-    highlightBorder.cornerRadius = 3;
-    highlightBorder.fillColor = kSLColorHex(@"BECDDB");
-    
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string];
-    text.font = font;
-    text.color = textColor;
-}
+//- (NSAttributedString *)_fixTextWithStatus:(SLStatus *)status fontSize:(CGFloat) fontSize textColor:(UIColor *)textColor {
+//    NSMutableString *string = status.text.copy;
+//
+//    UIFont *font = kSLFont(fontSize);
+//
+//    YYTextBorder *highlightBorder = [[YYTextBorder alloc] init];
+//    highlightBorder.insets = UIEdgeInsetsMake(-2, 0, -2, 0);
+//    highlightBorder.cornerRadius = 3;
+//    highlightBorder.fillColor = kSLColorHex(@"BECDDB");
+//
+//    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string];
+//    text.yy_font = font;
+//    text.yy_color = textColor;
+//
+//    for (SLStatusUrlStruct *urlStruct in status.url_struct) {
+//        if (urlStruct.url_title.length == 0) continue ;
+//        if (urlStruct.short_url.length == 0) continue ;
+//
+//        NSString *urlTitle = urlStruct.url_title;
+//
+//        NSRange searchRange = NSMakeRange(0, text.string.length);
+//        do {
+//            NSRange range = [text.string rangeOfString:urlStruct.short_url options:kNilOptions range:searchRange];
+//            if (range.location == NSNotFound) break;
+//
+//
+////            if ([text yy_attribute:YYTextHighlightAttributeName atIndex:range.location] == nil) {
+////
+////                // 替换的内容
+////                NSMutableAttributedString *replace = [[NSMutableAttributedString alloc] initWithString:urlTitle];
+////                if (urlStruct.url_type_pic.length) {
+////                    // 链接头部有个图片附件 (要从网络获取)
+////                    NSURL *picURL = [NSURL URLWithString:urlStruct.url_type_pic];
+////                    NSAttributedString *pic = [self _attachmentWithFontSize:fontSize imageURL:wburl.urlTypePic shrink:YES];
+////                    [replace insertAttributedString:pic atIndex:0];
+////                }
+////
+////            }
+//        } while (1);
+//    }
+//}
+
 @end
 
 @implementation SLStatusTextPositionModifier

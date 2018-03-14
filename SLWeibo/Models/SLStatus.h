@@ -147,7 +147,7 @@
 @property (nonatomic, strong) SLStatusTopic *topic_struct;
 @property (nonatomic, strong) NSDictionary<NSString *, SLStatusPicutre *> *pic_infos;
 @property (nonatomic, strong) NSArray<NSString *> *pic_ids;
-@property (nonatomic, strong) SLStatusUrlStruct *url_struct;
+@property (nonatomic, strong) NSArray<SLStatusUrlStruct *> *url_struct;
 @end
 
 

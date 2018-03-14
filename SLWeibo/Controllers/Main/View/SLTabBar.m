@@ -29,7 +29,15 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        UIButton *plusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         
+        [plusBtn setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_background"] forState:UIControlStateNormal];
+        [plusBtn setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_background_highlighted"] forState:UIControlStateHighlighted];
+        [plusBtn setImage:[UIImage imageNamed:@"tabbar_compose_icon_add"] forState:UIControlStateNormal];
+//        [plusBtn setImage:[UIImage imageNamed:@"tabbar_compose_icon_add_highlighted_os7"] forState:UIControlStateHighlighted];
+        plusBtn.frame = CGRectMake(0, 0, plusBtn.currentBackgroundImage.size.width, plusBtn.currentBackgroundImage.size.height);
+        [plusBtn addTarget:self action:@selector(btnclick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:plusBtn];
     }
     return self;
 }
@@ -48,6 +56,8 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    self.subviews[0].center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    
     // 布局按钮的位置
     for (int index = 0; index<self.tabbarBtns.count; index++ ) {
         
@@ -57,9 +67,9 @@
         CGFloat bH = self.frame.size.height;
         CGFloat bX = index * bW;
         CGFloat bY = 0;
-//        if (index>1) {
-//            bX += bW;
-//        }
+        if (index>1) {
+            bX += bW;
+        }
         btn.frame = CGRectMake(bX, bY, bW, bH);
         btn.tag = index; // 绑定tag，方便以后的跳转
     }

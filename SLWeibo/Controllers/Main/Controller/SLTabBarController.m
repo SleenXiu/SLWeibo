@@ -66,13 +66,16 @@
 {
     // 主页
     SLHomeViewController *home = [[SLHomeViewController alloc] init];
-    [self setItemWithVc:home title:@"首页" imageName:@"tabbar_home_os7" selectImageName:@"tabbar_home_selected_os7"];
+    [self setItemWithVc:home title:@"首页" imageName:@"tabbar_home" selectImageName:@"tabbar_home_selected"];
     // 发现
+    SLDiscoverViewController *discover1 = [[SLDiscoverViewController alloc] init];
+    [self setItemWithVc:discover1 title:@"消息" imageName:@"tabbar_message" selectImageName:@"tabbar_message_selected"];
+    
     SLDiscoverViewController *discover = [[SLDiscoverViewController alloc] init];
-    [self setItemWithVc:discover title:@"发现" imageName:@"tabbar_discover_os7" selectImageName:@"tabbar_discover_selected_os7"];
+    [self setItemWithVc:discover title:@"发现" imageName:@"tabbar_discover" selectImageName:@"tabbar_discover_selected"];
     // 我
     SLMeViewController *me = [[SLMeViewController alloc] init];
-    [self setItemWithVc:me title:@"我" imageName:@"tabbar_profile_os7" selectImageName:@"tabbar_profile_selected_os7"];
+    [self setItemWithVc:me title:@"我" imageName:@"tabbar_me" selectImageName:@"tabbar_me_selected"];
     
 }
 
