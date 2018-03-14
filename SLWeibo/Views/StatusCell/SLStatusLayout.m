@@ -67,19 +67,19 @@
     
     
 }
-- (CGSize)sizeWithText:(NSString *)text andFont:(UIFont *)font maxWidth:(CGFloat)width{
-    if (text.length < 1) {
-        return CGSizeZero;
-    }
-    UILabel *label = [[UILabel alloc] init];
-    label.font = font;
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    style.lineSpacing = 6.0;
-    NSAttributedString *string = [[NSAttributedString alloc] initWithString:text
-                                                                 attributes:@{NSFontAttributeName:font,NSParagraphStyleAttributeName:style}];
-    label.attributedText = string;
-    [label sizeThatFits:CGSizeMake(width, 100)];
-    return label.bounds.size;
+- (NSAttributedString *)_fixTextWithStatus:(SLStatus *)status fontSize:(CGFloat) fontSize textColor:(UIColor *)textColor {
+    NSMutableString *string = status.text.copy;
+    
+    UIFont *font = kSLFont(fontSize);
+    
+    YYTextBorder *highlightBorder = [[YYTextBorder alloc] init];
+    highlightBorder.insets = UIEdgeInsetsMake(-2, 0, -2, 0);
+    highlightBorder.cornerRadius = 3;
+    highlightBorder.fillColor = kSLColorHex(@"BECDDB");
+    
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:string];
+    text.font = font;
+    text.color = textColor;
 }
 @end
 
@@ -96,14 +96,14 @@
         for (NSUInteger i = 0, max = lines.count; i < max; i++) {
             YYTextLine *line = lines[i];
             CGPoint pos = line.position;
-            pos.y = line.row * _fixedLineHeight + _fixedLineHeight * 0.6 + container.insets.top;
+            pos.y = line.row * _fixedLineHeight + _fixedLineHeight * 0.7 + container.insets.top;
             line.position = pos;
         }
     }
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    YYTextLinePositionSimpleModifier *one = [self.class new];
+    SLStatusTextPositionModifier *one = [self.class new];
     one.fixedLineHeight = _fixedLineHeight;
     return one;
 }

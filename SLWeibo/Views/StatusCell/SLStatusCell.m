@@ -121,6 +121,14 @@
     self.textLabel.textLayout = statusLayout.textLayout;
     self.textLabel.mj_h = statusLayout.textHeight;
     
+//    YYTextDebugOption *op = [YYTextDebugOption new];
+//    op.baselineColor = [UIColor redColor];
+//    op.CTLineFillColor = [UIColor colorWithRed:0.000 green:0.484 blue:1.000 alpha:0.165];
+//    [YYTextDebugOption setSharedDebugOption:op];
+//    self.textLabel.debugOption = op;
+//    
+//    self.textLabel.layer.borderColor = [[UIColor redColor] CGColor];
+//    self.textLabel.layer.borderWidth = 0.5;
     
     self.mj_h = statusLayout.textHeight;
 //    _textLabel.mj_h =

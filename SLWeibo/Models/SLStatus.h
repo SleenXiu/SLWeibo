@@ -41,6 +41,27 @@
 @property (nonatomic, assign) NSInteger is_keep_current_mblog;
 @end
 
+@interface SLStatusPicutreMeta :NSObject
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *url;
+@property (nonatomic, assign) NSInteger cut_type;
+@property (nonatomic, assign) NSInteger width;
+@property (nonatomic, assign) NSInteger height;
+@property (nonatomic, assign) BOOL croped;
+@end
+@interface SLStatusPicutre : NSObject
+@property (nonatomic, copy) NSString *pic_id;
+@property (nonatomic, copy) NSString *object_id;
+@property (nonatomic, assign) int photo_tag;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, strong) SLStatusPicutreMeta *thumbnail;  ///< w:180
+@property (nonatomic, strong) SLStatusPicutreMeta *bmiddle;    ///< w:360 (列表中的缩略图)
+@property (nonatomic, strong) SLStatusPicutreMeta *middleplus; ///< w:480
+@property (nonatomic, strong) SLStatusPicutreMeta *large;      ///< w:720 (放大查看)
+@property (nonatomic, strong) SLStatusPicutreMeta *largest;    ///<       (查看原图)
+@property (nonatomic, strong) SLStatusPicutreMeta *original;   ///<
+@end
+
 @interface SLStatusPageInfo : NSObject
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *object_type;  // videp topic
@@ -50,7 +71,7 @@
 @property (nonatomic, copy) NSString *content1;
 @property (nonatomic, copy) NSString *content2;
 @property (nonatomic, strong) SLStatusMediaInfo *media_info; // @"stream_url"
-@property (nonatomic, strong) NSArray *pic_info;
+@property (nonatomic, strong) NSArray<SLStatusPicutre *> *pic_info;
 @end
 
 @interface SLStatusTopic : NSObject
@@ -58,6 +79,27 @@
 @property (nonatomic, copy) NSString *topic_url;
 @property (nonatomic, copy) NSString *topic_title;
 @property (nonatomic, assign) NSInteger is_invalid;
+@end
+
+
+@interface SLStatusUrlStruct : NSObject
+@property (nonatomic, copy) NSString *url_type_pic;
+
+@property (nonatomic, copy) NSString *url_title;
+
+@property (nonatomic, copy) NSString *storage_type;
+
+@property (nonatomic, copy) NSString *short_url;
+@property (nonatomic, assign) BOOL result;
+@property (nonatomic, copy) NSString *page_id;
+@property (nonatomic, copy) NSString *ori_url;
+@property (nonatomic, copy) NSString *object_type;
+@property (nonatomic, assign) NSInteger need_save_obj;
+@property (nonatomic, assign) NSInteger hide;
+@property (nonatomic, strong) NSDictionary *actionlog;
+
+@property (nonatomic, strong) NSArray<NSString *> *pic_ids;
+@property (nonatomic, strong) NSDictionary<NSString *, SLStatusPicutre *> *pic_infos;
 @end
 
 
@@ -103,8 +145,9 @@
 @property (nonatomic, strong) SLStatus *retweeted_status;
 @property (nonatomic, strong) SLStatusPageInfo *page_info;
 @property (nonatomic, strong) SLStatusTopic *topic_struct;
-@property (nonatomic, strong) NSDictionary *pic_infos;
-@property (nonatomic, strong) NSArray *pic_ids;
+@property (nonatomic, strong) NSDictionary<NSString *, SLStatusPicutre *> *pic_infos;
+@property (nonatomic, strong) NSArray<NSString *> *pic_ids;
+@property (nonatomic, strong) SLStatusUrlStruct *url_struct;
 @end
 
 

@@ -67,3 +67,10 @@
 
 @implementation SLStatusTopic
 @end
+
+@implementation SLStatusPicutre
+@end
+@implementation SLStatusPicutreMeta
+@end
+@implementation SLStatusUrlStruct
+@end
