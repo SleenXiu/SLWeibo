@@ -26,7 +26,11 @@
 @property (nonatomic, strong) SLStatusLayout *statusLayout;
 @end
 @interface SLStatusCellBarView : UIView
-@property (nonatomic, strong) UIButton *shareButton;
+@property (nonatomic, strong) UIButton *retweetButton;
+@property (nonatomic, strong) UIButton *commentButton;
+@property (nonatomic, strong) UIButton *diggButton;
+
+@property (nonatomic, strong) SLStatusLayout *statusLayout;
 @end
 
 @interface SLStatusCellContentView : UIView

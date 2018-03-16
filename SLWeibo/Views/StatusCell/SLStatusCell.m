@@ -145,6 +145,59 @@
 }
 @end
 @implementation SLStatusCellBarView
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self addSubview:self.retweetButton];
+        [self addSubview:self.commentButton];
+        [self addSubview:self.diggButton];
+    }
+    return self;
+}
+- (void)setStatusLayout:(SLStatusLayout *)statusLayout {
+    _statusLayout = statusLayout;
+    SLStatus *status = statusLayout.status;
+    [self updateShowWithStatus:status];
+}
+- (void)updateShowWithStatus:(SLStatus *)status {
+    
+    [self.retweetButton setTitle:[NSString stringWithFormat:@"%zd", status.reposts_count] forState:UIControlStateNormal];
+    [self.commentButton setTitle:[NSString stringWithFormat:@"%zd", status.comments_count] forState:UIControlStateNormal];
+    [self.diggButton setTitle:[NSString stringWithFormat:@"%zd", status.attitudes_count] forState:UIControlStateNormal];
+}
+- (UIButton *)retweetButton {
+    if (!_retweetButton) {
+        _retweetButton = [[UIButton alloc] init];
+        _retweetButton.frame = CGRectMake(0, 0, kSLScreenWidth/3, kSLStatusCellBar_h);
+        [_retweetButton setBackgroundImage:[UIImage resizedImageWithName:@"timeline_barbutton_highlighted"] forState:UIControlStateHighlighted];
+        [_retweetButton setTitleColor:kSLColorHex(@"929292") forState:UIControlStateNormal];
+        [_retweetButton setTitleColor:kSLOrangeColor forState:UIControlStateSelected];
+        _retweetButton.titleLabel.font = kSLFont(12);
+    }
+    return _retweetButton;
+}
+- (UIButton *)commentButton {
+    if (!_commentButton) {
+        _commentButton = [[UIButton alloc] init];
+        _commentButton.frame = CGRectMake(kSLScreenWidth/3, 0, kSLScreenWidth/3, kSLStatusCellBar_h);
+        [_commentButton setBackgroundImage:[UIImage resizedImageWithName:@"timeline_barbutton_highlighted"] forState:UIControlStateHighlighted];
+        [_commentButton setTitleColor:kSLColorHex(@"929292") forState:UIControlStateNormal];
+        [_commentButton setTitleColor:kSLOrangeColor forState:UIControlStateSelected];
+        _commentButton.titleLabel.font = kSLFont(12);
+    }
+    return _commentButton;
+}
+- (UIButton *)diggButton {
+    if (!_diggButton) {
+        _diggButton = [[UIButton alloc] init];
+        _diggButton.frame = CGRectMake(kSLScreenWidth/3*2, 0, kSLScreenWidth/3, kSLStatusCellBar_h);
+        [_diggButton setBackgroundImage:[UIImage resizedImageWithName:@"timeline_barbutton_highlighted"] forState:UIControlStateHighlighted];
+        [_diggButton setTitleColor:kSLColorHex(@"929292") forState:UIControlStateNormal];
+        [_diggButton setTitleColor:kSLOrangeColor forState:UIControlStateSelected];
+        _diggButton.titleLabel.font = kSLFont(12);
+    }
+    return _diggButton;
+}
 @end
 
 
@@ -166,6 +219,9 @@
     self.centerView.statusLayout = statusLayout;
     
     self.topView.status = statusLayout.status;
+    
+    self.barView.statusLayout = statusLayout;
+    self.barView.mj_y = statusLayout.cellHight - kSLStatusCellBar_h - kSLStatusCellSpace_h;
 }
 - (SLStatusCellTopView *)topView {
     if (!_topView) {
@@ -184,6 +240,7 @@
 - (SLStatusCellBarView *)barView {
     if (!_barView) {
         _barView = [[SLStatusCellBarView alloc] init];
+        _barView.frame = CGRectMake(0, 0, kSLScreenWidth, kSLStatusCellBar_h);
     }
     return _barView;
 }
