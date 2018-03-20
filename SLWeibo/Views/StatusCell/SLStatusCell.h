@@ -30,6 +30,7 @@
 @property (nonatomic, strong) UIButton *commentButton;
 @property (nonatomic, strong) UIButton *diggButton;
 
+@property (nonatomic, strong) UIImageView *lineView;
 @property (nonatomic, strong) SLStatusLayout *statusLayout;
 @end
 

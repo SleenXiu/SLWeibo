@@ -151,6 +151,7 @@
         [self addSubview:self.retweetButton];
         [self addSubview:self.commentButton];
         [self addSubview:self.diggButton];
+        [self addSubview:self.lineView];
     }
     return self;
 }
@@ -161,18 +162,34 @@
 }
 - (void)updateShowWithStatus:(SLStatus *)status {
     
-    [self.retweetButton setTitle:[NSString stringWithFormat:@"%zd", status.reposts_count] forState:UIControlStateNormal];
-    [self.commentButton setTitle:[NSString stringWithFormat:@"%zd", status.comments_count] forState:UIControlStateNormal];
-    [self.diggButton setTitle:[NSString stringWithFormat:@"%zd", status.attitudes_count] forState:UIControlStateNormal];
+    [self.retweetButton setTitle:status.reposts_count ==0? @"转发":[self formatCount:status.reposts_count] forState:UIControlStateNormal];
+    [self.commentButton setTitle:status.comments_count ==0? @"评论":[self formatCount:status.comments_count]
+                        forState:UIControlStateNormal];
+    [self.diggButton setTitle:status.attitudes_count ==0? @"点赞":[self formatCount:status.attitudes_count]
+                     forState:UIControlStateNormal];
+}
+- (NSString *)formatCount:(NSInteger)count {
+    return [NSString stringWithFormat:@"%zd", count];
+}
+- (UIImageView *)lineView {
+    if (!_lineView) {
+        _lineView = [[UIImageView alloc] init];
+        _lineView.frame = CGRectMake(kSLStatusCellPadding_lr, 0, kSLStatusCellContent_w, 0.5);
+        _lineView.backgroundColor = kSLColorHex(@"E6E6E6");
+    }
+    return _lineView;
 }
 - (UIButton *)retweetButton {
     if (!_retweetButton) {
         _retweetButton = [[UIButton alloc] init];
         _retweetButton.frame = CGRectMake(0, 0, kSLScreenWidth/3, kSLStatusCellBar_h);
         [_retweetButton setBackgroundImage:[UIImage resizedImageWithName:@"timeline_barbutton_highlighted"] forState:UIControlStateHighlighted];
-        [_retweetButton setTitleColor:kSLColorHex(@"929292") forState:UIControlStateNormal];
+        [_retweetButton setImage:[UIImage imageNamed:@"timeline_bar_retweet"] forState:UIControlStateNormal];
+        [_retweetButton setTitleColor:kSLColorHex(@"636363") forState:UIControlStateNormal];
         [_retweetButton setTitleColor:kSLOrangeColor forState:UIControlStateSelected];
         _retweetButton.titleLabel.font = kSLFont(12);
+        _retweetButton.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, -4);
+        _retweetButton.imageEdgeInsets = UIEdgeInsetsMake(0, -4, 0, 4);
     }
     return _retweetButton;
 }
@@ -181,9 +198,12 @@
         _commentButton = [[UIButton alloc] init];
         _commentButton.frame = CGRectMake(kSLScreenWidth/3, 0, kSLScreenWidth/3, kSLStatusCellBar_h);
         [_commentButton setBackgroundImage:[UIImage resizedImageWithName:@"timeline_barbutton_highlighted"] forState:UIControlStateHighlighted];
-        [_commentButton setTitleColor:kSLColorHex(@"929292") forState:UIControlStateNormal];
+        [_commentButton setImage:[UIImage imageNamed:@"timeline_bar_comment"] forState:UIControlStateNormal];
+        [_commentButton setTitleColor:kSLColorHex(@"636363") forState:UIControlStateNormal];
         [_commentButton setTitleColor:kSLOrangeColor forState:UIControlStateSelected];
         _commentButton.titleLabel.font = kSLFont(12);
+        _commentButton.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, -4);
+        _commentButton.imageEdgeInsets = UIEdgeInsetsMake(0, -4, 0, 4);
     }
     return _commentButton;
 }
@@ -192,8 +212,12 @@
         _diggButton = [[UIButton alloc] init];
         _diggButton.frame = CGRectMake(kSLScreenWidth/3*2, 0, kSLScreenWidth/3, kSLStatusCellBar_h);
         [_diggButton setBackgroundImage:[UIImage resizedImageWithName:@"timeline_barbutton_highlighted"] forState:UIControlStateHighlighted];
-        [_diggButton setTitleColor:kSLColorHex(@"929292") forState:UIControlStateNormal];
+        [_diggButton setImage:[UIImage imageNamed:@"timeline_bar_digg"] forState:UIControlStateNormal];
+        [_diggButton setImage:[UIImage imageNamed:@"timeline_bar_digg_selected"] forState:UIControlStateSelected];
+        [_diggButton setTitleColor:kSLColorHex(@"636363") forState:UIControlStateNormal];
         [_diggButton setTitleColor:kSLOrangeColor forState:UIControlStateSelected];
+        _diggButton.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, -4);
+        _diggButton.imageEdgeInsets = UIEdgeInsetsMake(0, -4, 0, 4);
         _diggButton.titleLabel.font = kSLFont(12);
     }
     return _diggButton;
