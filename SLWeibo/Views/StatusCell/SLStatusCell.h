@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SLPhotosView.h"
 #define SLColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 @class SLStatusLayout, SLStatusCard, SLStatus, YYLabel;
 
@@ -22,6 +22,7 @@
 @end
 @interface SLStatusCellCenterView : UIView
 @property (nonatomic, strong) YYLabel *textLabel;
+@property (nonatomic, strong) SLPhotosView *photosView;
 
 @property (nonatomic, strong) SLStatusLayout *statusLayout;
 @end
@@ -38,7 +39,6 @@
 @property (nonatomic, strong) SLStatusCellTopView *topView;
 @property (nonatomic, strong) SLStatusCellCenterView *centerView;
 @property (nonatomic, strong) SLStatusCellBarView *barView;
-
 
 @property (nonatomic, strong) SLStatusLayout *statusLayout;
 @end

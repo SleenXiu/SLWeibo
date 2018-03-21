@@ -7,11 +7,10 @@
 //
 
 #import "SLPhotosView.h"
-#import "SLPhoto.h"
 #import "SLPhotoView.h"
 #import "MJPhoto.h"
 #import "MJPhotoBrowser.h"
-
+#import "SLStatus.h"
 #define SLPhotoW 70
 #define SLPhotoH 70
 #define SLPhotoMargin 10
@@ -48,8 +47,9 @@
         
         mjphoto.srcImageView = self.subviews[i]; // 来源于哪个UIImageView
         
-        SLPhoto *SLphoto = self.photos[i];
-        NSString *photoUrl = [SLphoto.thumbnail_pic stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+        SLStatusPicutre *photo = self.photos[i];
+        NSString *photoUrl = photo.original.url;
+        
         mjphoto.url = [NSURL URLWithString:photoUrl]; // 图片路径
         
         [myphotos addObject:mjphoto];

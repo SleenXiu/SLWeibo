@@ -38,6 +38,7 @@
 
 @property (nonatomic, assign) CGFloat textHeight;
 @property (nonatomic, strong) YYTextLayout *textLayout;
+@property (nonatomic, assign) CGSize photoSize;
 @property (nonatomic, assign) CGFloat cellHight;
 
 @end

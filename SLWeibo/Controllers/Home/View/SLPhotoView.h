@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class SLPhoto;
+@class SLStatusPicutre;
 @interface SLPhotoView : UIImageView
-@property (nonatomic, strong) SLPhoto *photo;
+@property (nonatomic, strong) SLStatusPicutre *photo;
 @end

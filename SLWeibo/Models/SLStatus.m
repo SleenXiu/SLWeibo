@@ -18,6 +18,27 @@
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"id":@"ID"};
 }
+//- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property {
+//    if ([property.name isEqualToString:@"pic_ids"]) {
+//        if (oldValue == nil) return @"";
+//        return oldValue;
+//    }
+//    
+//    return oldValue;
+//}
+//+ (void)mj_setupNewValueFromOldValue:(MJNewValueFromOldValue)newValueFormOldValue {
+//    if (<#condition#>) {
+//        <#statements#>
+//    }
+//}
+- (void)setPic_infos:(NSDictionary *)pic_infos {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    for (NSString *key in pic_infos.allKeys) {
+        NSDictionary *value = pic_infos[key];
+        [dict setValue:[SLStatusPicutre mj_objectWithKeyValues:value] forKey:key];
+    }
+    _pic_infos = dict;
+}
 - (NSString *)created_at {
     // _created_at == Wed Jan 06 17:33:40 +0800 2016
     // 1.获得微博的发送时间

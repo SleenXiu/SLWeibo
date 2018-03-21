@@ -53,7 +53,8 @@
     
     if (status.pic_ids.count > 0) {
         _cellHight += kSLStatusCellMedia_t;
-        _cellHight += [SLPhotosView photosViewSizeWithPhotosCount:(int)status.pic_ids.count].height;
+        _photoSize = [SLPhotosView photosViewSizeWithPhotosCount:(int)status.pic_ids.count];
+        _cellHight += _photoSize.height;
     } else if ([status.page_info.type isEqualToString:@"video"]) {
         _cellHight += (kSLStatusCellContent_w * kSLStatusCellMedia_scale);
     }

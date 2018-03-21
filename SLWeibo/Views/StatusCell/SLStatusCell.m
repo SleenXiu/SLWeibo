@@ -12,7 +12,7 @@
 #import "SLUser.h"
 #import "SLStatusLayout.h"
 #import <YYText.h>
-
+#import "MJPhoto.h"
 
 @implementation SLStatusCellTopView
 - (instancetype)init {
@@ -111,6 +111,7 @@
     self = [super init];
     if (self) {
         [self addSubview:self.textLabel];
+        [self addSubview:self.photosView];
     }
     return self;
 }
@@ -130,6 +131,17 @@
 //    self.textLabel.layer.borderColor = [[UIColor redColor] CGColor];
 //    self.textLabel.layer.borderWidth = 0.5;
     
+    self.photosView.frame = CGRectMake(kSLStatusCellPadding_lr, CGRectGetMaxY(self.textLabel.frame)+kSLStatusCellMedia_t,
+                                       statusLayout.photoSize.width, statusLayout.photoSize.height);
+    
+    NSMutableArray *photos = [NSMutableArray array];
+    for (NSString *pID in status.pic_ids) {
+        SLStatusPicutre *p = status.pic_infos[pID];
+        [photos addObject:p];
+    }
+    self.photosView.photos = photos;
+    
+    
     self.mj_h = statusLayout.textHeight;
 //    _textLabel.mj_h =
 }
@@ -142,6 +154,12 @@
         _textLabel.numberOfLines = 0;
     }
     return _textLabel;
+}
+- (SLPhotosView *)photosView {
+    if (!_photosView) {
+        _photosView = [[SLPhotosView alloc] init];
+    }
+    return _photosView;
 }
 @end
 @implementation SLStatusCellBarView
@@ -291,7 +309,8 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.selectedBackgroundView = [[UIView alloc] init];
+//        self.selectedBackgroundView = [[UIView alloc] init];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.statusView];
     }

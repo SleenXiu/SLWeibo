@@ -7,8 +7,8 @@
 //
 
 #import "SLPhotoView.h"
-#import "SLPhoto.h"
 #import "UIImageView+WebCache.h"
+#import "SLStatus.h"
 @interface SLPhotoView()
 @property (nonatomic, weak) UIImageView *gifView;
 @end
@@ -27,19 +27,15 @@
     }
     return self;
 }
-
-- (void)setPhoto:(SLPhoto *)photo
-{
+- (void)setPhoto:(SLStatusPicutre *)photo {
     _photo = photo;
     
-    // 控制gifView的可见性
-    self.gifView.hidden = ![photo.thumbnail_pic hasSuffix:@"gif"];
+    self.gifView.hidden = ![photo.thumbnail.type hasSuffix:@"gif"];
     
-    // 下载图片
-    [self sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
-    
+    [self sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail.url] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
     
 }
+
 
 - (void)layoutSubviews
 {
