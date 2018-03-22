@@ -7,7 +7,8 @@
 //
 
 #import "SLPhotoView.h"
-#import "UIImageView+WebCache.h"
+//#import "UIImageView+WebCache.h"
+#import <FLAnimatedImageView+WebCache.h>
 #import "SLStatus.h"
 @interface SLPhotoView()
 @property (nonatomic, weak) UIImageView *gifView;
@@ -32,8 +33,14 @@
     
     self.gifView.hidden = ![photo.thumbnail.type hasSuffix:@"gif"];
     
-    [self sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail.url] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
-    
+//    NSString *url = _onlyOne ? photo.bmiddle.url : photo.bmiddle.url;
+    if ([photo.thumbnail.type hasSuffix:@"gif"]) {
+        
+        [self sd_setImageWithURL:[NSURL URLWithString:photo.original.url] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+    } else {
+//    [self sd_setImageWithURL:[NSURL URLWithString:photo.bmiddle.url] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+    [self sd_setImageWithURL:[NSURL URLWithString:photo.bmiddle.url] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
+    }
 }
 
 

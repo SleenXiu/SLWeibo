@@ -8,6 +8,8 @@
 
 #import "SLMeViewController.h"
 #import "SLSetController.h"
+#import <FLAnimatedImage.h>
+#import <FLAnimatedImageView+WebCache.h>
 @interface SLMeViewController ()
 
 @end
@@ -20,15 +22,21 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleDone target:self action:@selector(setBtnClick:)];
     
-    UIView *view = [[UIView alloc] init];
-    view.frame = CGRectMake(12, 100, 40, 40);
-    view.backgroundColor = [UIColor greenColor];
-    [self.view addSubview:view];
+//    UIView *view = [[UIView alloc] init];
+//    view.frame = CGRectMake(12, 100, 40, 40);
+//    view.backgroundColor = [UIColor greenColor];
+//    [self.view addSubview:view];
+//
+//    UIView *view2 = [[UIView alloc] init];
+//    view2.frame = CGRectMake(12, 100, 80, 39.0);
+//    view2.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:view2];
     
-    UIView *view2 = [[UIView alloc] init];
-    view2.frame = CGRectMake(12, 100, 80, 39.0);
-    view2.backgroundColor = [UIColor redColor];
-    [self.view addSubview:view2];
+    FLAnimatedImageView *imageView = [[FLAnimatedImageView alloc] init];
+    imageView.frame = CGRectMake(12, 100, kSLScreenWidth-32, 120);
+    [imageView sd_setImageWithURL:[NSURL URLWithString:@"https://wx2.sinaimg.cn/woriginal/85bdc80bgy1fp97n83456g20b4053nn5.gif"] placeholderImage:nil];
+    [self.view addSubview:imageView];
+    
     
 }
 

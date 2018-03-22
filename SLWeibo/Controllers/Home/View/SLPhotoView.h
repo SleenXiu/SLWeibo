@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import <FLAnimatedImage.h>
 @class SLStatusPicutre;
-@interface SLPhotoView : UIImageView
+@interface SLPhotoView : FLAnimatedImageView
 @property (nonatomic, strong) SLStatusPicutre *photo;
+@property (nonatomic, assign) BOOL onlyOne;
 @end

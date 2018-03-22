@@ -7,6 +7,7 @@ target 'SLWeibo' do
 
   # Pods for SLWeibo
   pod 'SDWebImage'
+  pod 'SDWebImage/GIF'
   pod 'MJExtension', :inhibit_warnings => true
   pod 'MJRefresh', :inhibit_warnings => true
   pod 'AFNetworking', :inhibit_warnings => true

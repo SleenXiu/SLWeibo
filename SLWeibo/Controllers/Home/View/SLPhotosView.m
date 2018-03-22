@@ -11,9 +11,11 @@
 #import "MJPhoto.h"
 #import "MJPhotoBrowser.h"
 #import "SLStatus.h"
-#define SLPhotoW 70
-#define SLPhotoH 70
-#define SLPhotoMargin 10
+#import "SLStatusLayout.h"
+
+#define SLPhotoMargin 4
+#define SLPhotoW (kSLScreenWidth-24-4*2)/3.0
+#define SLPhotoH (kSLScreenWidth-24-4*2)/3.0
 
 @implementation SLPhotosView
 
@@ -23,7 +25,9 @@
     if (self) {
         // 初始化9个子控件
         for (int i = 0; i<9; i++) {
+            
             SLPhotoView *photoView = [[SLPhotoView alloc] init];
+            photoView.runLoopMode = NSRunLoopCommonModes;
             photoView.userInteractionEnabled = YES;
             photoView.alpha = 1.0;
             photoView.tag = i;
@@ -92,8 +96,17 @@
             // UIViewContentModeScaleToFill : 直接拉伸图片至填充整个imageView
             
             if (photos.count == 1) {
-                photoView.contentMode = UIViewContentModeScaleAspectFit;
-                photoView.clipsToBounds = NO;
+                SLStatusPicutre *p = photos[i];
+                if ([p.type isEqualToString:@"gif"]) {
+                    photoView.backgroundColor = [UIColor blackColor];
+                    photoView.contentMode = UIViewContentModeCenter;
+                    photoView.clipsToBounds = YES;
+                    photoView.frame = self.bounds;
+                } else {
+                    photoView.contentMode = UIViewContentModeScaleAspectFill;
+                    photoView.frame = self.bounds;
+                }
+                
             } else {
                 photoView.contentMode = UIViewContentModeScaleAspectFill;
                 photoView.clipsToBounds = YES;

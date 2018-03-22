@@ -51,10 +51,29 @@
     
     
     
-    if (status.pic_ids.count > 0) {
+    if (status.pic_ids.count > 1) {
         _cellHight += kSLStatusCellMedia_t;
         _photoSize = [SLPhotosView photosViewSizeWithPhotosCount:(int)status.pic_ids.count];
         _cellHight += _photoSize.height;
+        
+    } else if (status.pic_ids.count == 1) {
+        SLStatusPicutre *p = status.pic_infos[[status.pic_ids firstObject]];
+        if ([p.type isEqualToString:@"gif"]) {
+            _cellHight += kSLStatusCellMedia_t;
+            _photoSize = CGSizeMake(kSLStatusCellContent_w, kSLStatusCellContent_w*kSLStatusCellMedia_scale);
+            _cellHight += _photoSize.height;
+        } else {
+            _cellHight += kSLStatusCellMedia_t;
+            if (p.original.width < p.original.height) { // 长
+                CGFloat scale = 462.0/348;
+                _photoSize = CGSizeMake(kSLStatusCellContent_w*0.5, kSLStatusCellContent_w*0.5*scale);
+            } else {
+                CGFloat scale = 348/462.0;
+                _photoSize = CGSizeMake(kSLStatusCellContent_w*2/3.0, kSLStatusCellContent_w*2/3.0*scale);
+            }
+            _cellHight += _photoSize.height;
+        }
+        
     } else if ([status.page_info.type isEqualToString:@"video"]) {
         _cellHight += (kSLStatusCellContent_w * kSLStatusCellMedia_scale);
     }

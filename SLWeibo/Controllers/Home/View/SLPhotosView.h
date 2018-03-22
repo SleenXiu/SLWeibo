@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface SLPhotosView : UIView
 /**
  *  需要展示的图片(数组里面装的都是MJPhoto模型)

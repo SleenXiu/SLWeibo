@@ -60,7 +60,6 @@
         
     }
     
-    NSLog(@"%@", NSStringFromCGRect(self.avatarView.frame));
 }
 #pragma mark - getter
 - (UIImageView *)avatarView {
@@ -142,7 +141,7 @@
     self.photosView.photos = photos;
     
     
-    self.mj_h = statusLayout.textHeight;
+    self.mj_h = self.photosView.mj_y + self.photosView.mj_h;
 //    _textLabel.mj_h =
 }
 - (YYLabel *)textLabel {
@@ -157,7 +156,7 @@
 }
 - (SLPhotosView *)photosView {
     if (!_photosView) {
-        _photosView = [[SLPhotosView alloc] init];
+        _photosView = [[SLPhotosView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     }
     return _photosView;
 }
