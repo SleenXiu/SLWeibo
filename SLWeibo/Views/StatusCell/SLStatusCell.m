@@ -47,7 +47,7 @@
         [temStr setAttributes:@{NSFontAttributeName:self.sourceLabel.font, NSForegroundColorAttributeName:self.sourceLabel.textColor}
                         range:NSMakeRange(0, temStr.length)];
         if (status.source_allowclick) {
-            [temStr setAttributes:@{NSFontAttributeName:self.sourceLabel.font, NSForegroundColorAttributeName:kSLOrangeColor}
+            [temStr setAttributes:@{NSFontAttributeName:self.sourceLabel.font, NSForegroundColorAttributeName:kSLColorHex(@"5083B3")}
                             range:NSMakeRange(2, temStr.length-2)];
         }
         

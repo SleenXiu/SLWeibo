@@ -19,6 +19,7 @@
 @interface SLHomeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *statusLayout;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIButton *searchButton;
 @end
 
 @implementation SLHomeViewController
@@ -30,6 +31,8 @@
 
     [self.view addSubview:self.tableView];
     [self loadData];
+    
+    [self.tableView addSubview:self.searchButton];
     
 }
 
@@ -94,10 +97,29 @@
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
+        
+        _tableView.contentInset = UIEdgeInsetsMake(43, 0, 0, 0);
     }
     return _tableView;
 }
 
-
+- (UIButton *)searchButton {
+    if (!_searchButton) {
+        _searchButton = [[UIButton alloc] init];
+        _searchButton.frame = CGRectMake(8, (43-27)*0.5-43, kSLScreenWidth-16, 27);
+        _searchButton.titleLabel.font = kSLFont(13);
+        _searchButton.layer.cornerRadius = 4.0;
+        _searchButton.clipsToBounds = YES;
+        [_searchButton setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+        [_searchButton setBackgroundImage:[UIImage imageWithColor:kSLColorHex(@"F9F9F9")] forState:UIControlStateHighlighted];
+        [_searchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
+        [_searchButton setTitle:@"大家正在搜：邓超怼怼怼" forState:UIControlStateNormal];
+        [_searchButton setTitleColor:kSLColorHex(@"B8B8B8") forState:UIControlStateNormal];
+        _searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        _searchButton.imageEdgeInsets = UIEdgeInsetsMake(0, 8, 0, -8);
+        _searchButton.titleEdgeInsets = UIEdgeInsetsMake(0, 16, 0, -16);
+    }
+    return _searchButton;
+}
 
 @end
