@@ -16,10 +16,14 @@
 #import "SLStatusCell.h"
 #import "SLStatusCard.h"
 #import "SLStatusLayout.h"
+#import "SLSearchViewController.h"
+#import "SLNavigationController.h"
 @interface SLHomeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *statusLayout;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIButton *searchButton;
+
+@property (nonatomic, strong) SLSearchViewController *searchVC;
 @end
 
 @implementation SLHomeViewController
@@ -33,6 +37,7 @@
     [self loadData];
     
     [self.tableView addSubview:self.searchButton];
+    
     
 }
 
@@ -60,6 +65,12 @@
         NSLog(@"%@", error);
     }];
     
+}
+#pragma mark - Event
+- (void)searchButtonClick {
+    SLSearchViewController *searchVC = [[SLSearchViewController alloc] init];
+    SLNavigationController *navVC = [[SLNavigationController alloc] initWithRootViewController:searchVC];
+    [self presentViewController:navVC animated:NO completion:nil];
 }
 #pragma mark - UITableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -113,13 +124,14 @@
         [_searchButton setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
         [_searchButton setBackgroundImage:[UIImage imageWithColor:kSLColorHex(@"F9F9F9")] forState:UIControlStateHighlighted];
         [_searchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
+        [_searchButton setImage:[UIImage imageNamed:@"search"] forState:UIControlStateHighlighted];
         [_searchButton setTitle:@"大家正在搜：邓超怼怼怼" forState:UIControlStateNormal];
         [_searchButton setTitleColor:kSLColorHex(@"B8B8B8") forState:UIControlStateNormal];
         _searchButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         _searchButton.imageEdgeInsets = UIEdgeInsetsMake(0, 8, 0, -8);
         _searchButton.titleEdgeInsets = UIEdgeInsetsMake(0, 16, 0, -16);
+        [_searchButton addTarget:self action:@selector(searchButtonClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _searchButton;
 }
-
 @end

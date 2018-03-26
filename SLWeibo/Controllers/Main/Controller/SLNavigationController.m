@@ -39,10 +39,14 @@
     
     // 设置文字属性
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] =  [UIColor orangeColor];
-    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:14];
+    textAttrs[NSForegroundColorAttributeName] = kSLColorHex(@"1B1B1B");
+    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:16];
+    
+    NSMutableDictionary *textAttrsH = [NSMutableDictionary dictionary];
+    textAttrsH[NSForegroundColorAttributeName] = kSLOrangeColor;
+    textAttrsH[NSFontAttributeName] = [UIFont systemFontOfSize:16];
     [item setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
-    [item setTitleTextAttributes:textAttrs forState:UIControlStateHighlighted];
+    [item setTitleTextAttributes:textAttrsH forState:UIControlStateHighlighted];
 }
 
 // 在push的时候拦截，隐藏tabbar

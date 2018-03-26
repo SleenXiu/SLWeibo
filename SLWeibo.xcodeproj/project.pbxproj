@@ -59,6 +59,8 @@
 		B1D1B0152056492A004C0FB6 /* NSDictionary+SL.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1B0142056492A004C0FB6 /* NSDictionary+SL.m */; };
 		B1D1B01720568C3C004C0FB6 /* unread_hot_timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = B1D1B01620568C3C004C0FB6 /* unread_hot_timeline.json */; };
 		B1D1B01A2057812F004C0FB6 /* UIColor+SL.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1B0192057812F004C0FB6 /* UIColor+SL.m */; };
+		B1F7D0D72068E53E00846ECB /* SLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F7D0D62068E53E00846ECB /* SLSearchViewController.m */; };
+		B1F7D0DA2068F85C00846ECB /* UIBarButtonItem+SXCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F7D0D92068F85C00846ECB /* UIBarButtonItem+SXCreate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -165,6 +167,10 @@
 		B1D1B01620568C3C004C0FB6 /* unread_hot_timeline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = unread_hot_timeline.json; sourceTree = "<group>"; };
 		B1D1B0182057812F004C0FB6 /* UIColor+SL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+SL.h"; sourceTree = "<group>"; };
 		B1D1B0192057812F004C0FB6 /* UIColor+SL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SL.m"; sourceTree = "<group>"; };
+		B1F7D0D52068E53E00846ECB /* SLSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLSearchViewController.h; sourceTree = "<group>"; };
+		B1F7D0D62068E53E00846ECB /* SLSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLSearchViewController.m; sourceTree = "<group>"; };
+		B1F7D0D82068F85B00846ECB /* UIBarButtonItem+SXCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+SXCreate.h"; sourceTree = "<group>"; };
+		B1F7D0D92068F85C00846ECB /* UIBarButtonItem+SXCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+SXCreate.m"; sourceTree = "<group>"; };
 		BEBD1931C0DD20D5A1F10DF0 /* Pods-SLWeibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLWeibo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SLWeibo/Pods-SLWeibo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -549,6 +555,8 @@
 		B1B5201B2054431A00B6F9B8 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				B1F7D0D82068F85B00846ECB /* UIBarButtonItem+SXCreate.h */,
+				B1F7D0D92068F85C00846ECB /* UIBarButtonItem+SXCreate.m */,
 				B1B5201C2054431A00B6F9B8 /* MJPhotoBrowser */,
 			);
 			path = Vendor;
@@ -595,6 +603,7 @@
 				B16DE3681C3970B0007D300C /* Discover */,
 				B16DE3781C3970B0007D300C /* Me */,
 				B16DE37E1C3970B0007D300C /* Message */,
+				B1F7D0D42068E51900846ECB /* Search */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -608,6 +617,15 @@
 				B1B5203D20557A4D00B6F9B8 /* SLStatusLayout.m */,
 			);
 			path = StatusCell;
+			sourceTree = "<group>";
+		};
+		B1F7D0D42068E51900846ECB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B1F7D0D52068E53E00846ECB /* SLSearchViewController.h */,
+				B1F7D0D62068E53E00846ECB /* SLSearchViewController.m */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -761,6 +779,7 @@
 				B1D1B0022054CB7B004C0FB6 /* SLWeiboApiTool.m in Sources */,
 				B192316F1C43D789006BECCA /* SLPhoto.m in Sources */,
 				B16DE3861C3970B0007D300C /* SLMeViewController.m in Sources */,
+				B1F7D0DA2068F85C00846ECB /* UIBarButtonItem+SXCreate.m in Sources */,
 				B16DE3841C3970B0007D300C /* SLDiscoverViewController.m in Sources */,
 				B130C0AF1C3CF75500E283DA /* SLUser.m in Sources */,
 				B1B5202F2054431A00B6F9B8 /* MJPhoto.m in Sources */,
@@ -782,6 +801,7 @@
 				B1B520332054431A00B6F9B8 /* MJPhotoBrowser.m in Sources */,
 				B1B520322054431A00B6F9B8 /* SDWebImageManager+MJ.m in Sources */,
 				B1B5203B2055744400B6F9B8 /* UITabBar+Fix.m in Sources */,
+				B1F7D0D72068E53E00846ECB /* SLSearchViewController.m in Sources */,
 				B1D1B0152056492A004C0FB6 /* NSDictionary+SL.m in Sources */,
 				B16DE3901C397124007D300C /* SLHomeViewController.m in Sources */,
 				B1D1B01A2057812F004C0FB6 /* UIColor+SL.m in Sources */,
