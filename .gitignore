@@ -24,6 +24,6 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
-Pods/
-Podfile.lock
+#Pods/
+#Podfile.lock
 
