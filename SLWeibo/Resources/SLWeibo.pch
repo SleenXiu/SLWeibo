@@ -22,9 +22,12 @@
 #import "NSDictionary+SL.h"
 #import "UIColor+SL.h"
 #import "UIImage+SL.h"
+#import "SLBaseTableView.h"
 
-#define kSLTabBarHeight 44
+#define kSLTabBarHeight 44.0
+#define kSLNavBarHeight 64.0
 #define kSLScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kSLScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #define kSLFont(size) [UIFont systemFontOfSize:size]
 #define kSLColorHex(hex) [UIColor sl_colorWithHexString:hex]

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B61A8188CB2C57948A92D03 /* libPods-SLWeibo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 039EFAA533FCA51666D44100 /* libPods-SLWeibo.a */; };
+		AD2F64C9208385BC00E5B5FA /* SLMeSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F64C8208385BC00E5B5FA /* SLMeSectionCell.m */; };
+		AD2F64CC208386C400E5B5FA /* SLBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F64CB208386C400E5B5FA /* SLBaseTableView.m */; };
 		B102CD281C3BEDEA00132E55 /* SLAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B102CD271C3BEDEA00132E55 /* SLAccountTool.m */; };
 		B102CD2B1C3BF2B100132E55 /* SLStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = B102CD2A1C3BF2B100132E55 /* SLStatus.m */; };
 		B11E31DB1C43E78500CDB5A4 /* SLPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B11E31DA1C43E78500CDB5A4 /* SLPhotoView.m */; };
@@ -66,6 +68,10 @@
 /* Begin PBXFileReference section */
 		039EFAA533FCA51666D44100 /* libPods-SLWeibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SLWeibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49694CB5EC244A581B99BC7B /* Pods-SLWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLWeibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SLWeibo/Pods-SLWeibo.debug.xcconfig"; sourceTree = "<group>"; };
+		AD2F64C7208385BC00E5B5FA /* SLMeSectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLMeSectionCell.h; sourceTree = "<group>"; };
+		AD2F64C8208385BC00E5B5FA /* SLMeSectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLMeSectionCell.m; sourceTree = "<group>"; };
+		AD2F64CA208386C400E5B5FA /* SLBaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLBaseTableView.h; sourceTree = "<group>"; };
+		AD2F64CB208386C400E5B5FA /* SLBaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLBaseTableView.m; sourceTree = "<group>"; };
 		B102CD261C3BEDEA00132E55 /* SLAccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLAccountTool.h; sourceTree = "<group>"; };
 		B102CD271C3BEDEA00132E55 /* SLAccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLAccountTool.m; sourceTree = "<group>"; };
 		B102CD291C3BF2B100132E55 /* SLStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLStatus.h; sourceTree = "<group>"; };
@@ -201,6 +207,15 @@
 				BEBD1931C0DD20D5A1F10DF0 /* Pods-SLWeibo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD2F64C6208382E900E5B5FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD2F64C7208385BC00E5B5FA /* SLMeSectionCell.h */,
+				AD2F64C8208385BC00E5B5FA /* SLMeSectionCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B139E48B1C53A10F002013E5 /* Compose */ = {
@@ -421,6 +436,11 @@
 		B16DE3781C3970B0007D300C /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				AD2F64C6208382E900E5B5FA /* View */,
+				B16DE37A1C3970B0007D300C /* SLMeViewController.h */,
+				B16DE37B1C3970B0007D300C /* SLMeViewController.m */,
+				B1454FBC1C894B6300878914 /* SLSetController.h */,
+				B1454FBD1C894B6300878914 /* SLSetController.m */,
 				B16DE3791C3970B0007D300C /* Controller */,
 				B16DE37C1C3970B0007D300C /* Model */,
 				B16DE37D1C3970B0007D300C /* View */,
@@ -431,10 +451,6 @@
 		B16DE3791C3970B0007D300C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B16DE37A1C3970B0007D300C /* SLMeViewController.h */,
-				B16DE37B1C3970B0007D300C /* SLMeViewController.m */,
-				B1454FBC1C894B6300878914 /* SLSetController.h */,
-				B1454FBD1C894B6300878914 /* SLSetController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -588,6 +604,8 @@
 			isa = PBXGroup;
 			children = (
 				B1D1B0062054DE1A004C0FB6 /* StatusCell */,
+				AD2F64CA208386C400E5B5FA /* SLBaseTableView.h */,
+				AD2F64CB208386C400E5B5FA /* SLBaseTableView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -761,6 +779,7 @@
 				B16DE3951C3976FD007D300C /* SLTabBar.m in Sources */,
 				B1D1B0052054D5A2004C0FB6 /* SLStatusCard.m in Sources */,
 				B139E4911C53A142002013E5 /* SLComposeViewController.m in Sources */,
+				AD2F64CC208386C400E5B5FA /* SLBaseTableView.m in Sources */,
 				B16DE39B1C397D1F007D300C /* SLTabBarButton.m in Sources */,
 				B102CD2B1C3BF2B100132E55 /* SLStatus.m in Sources */,
 				B1D1B0122056491D004C0FB6 /* NSArray+SL.m in Sources */,
@@ -780,6 +799,7 @@
 				B192316F1C43D789006BECCA /* SLPhoto.m in Sources */,
 				B16DE3861C3970B0007D300C /* SLMeViewController.m in Sources */,
 				B1F7D0DA2068F85C00846ECB /* UIBarButtonItem+SXCreate.m in Sources */,
+				AD2F64C9208385BC00E5B5FA /* SLMeSectionCell.m in Sources */,
 				B16DE3841C3970B0007D300C /* SLDiscoverViewController.m in Sources */,
 				B130C0AF1C3CF75500E283DA /* SLUser.m in Sources */,
 				B1B5202F2054431A00B6F9B8 /* MJPhoto.m in Sources */,
