@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B61A8188CB2C57948A92D03 /* libPods-SLWeibo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 039EFAA533FCA51666D44100 /* libPods-SLWeibo.a */; };
+		AD1E15E6208C2A75002417E3 /* SLMeSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD1E15E5208C2A75002417E3 /* SLMeSectionCell.xib */; };
 		AD2F64C9208385BC00E5B5FA /* SLMeSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F64C8208385BC00E5B5FA /* SLMeSectionCell.m */; };
 		AD2F64CC208386C400E5B5FA /* SLBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2F64CB208386C400E5B5FA /* SLBaseTableView.m */; };
 		B102CD281C3BEDEA00132E55 /* SLAccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B102CD271C3BEDEA00132E55 /* SLAccountTool.m */; };
@@ -68,6 +69,7 @@
 /* Begin PBXFileReference section */
 		039EFAA533FCA51666D44100 /* libPods-SLWeibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SLWeibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49694CB5EC244A581B99BC7B /* Pods-SLWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SLWeibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SLWeibo/Pods-SLWeibo.debug.xcconfig"; sourceTree = "<group>"; };
+		AD1E15E5208C2A75002417E3 /* SLMeSectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SLMeSectionCell.xib; sourceTree = "<group>"; };
 		AD2F64C7208385BC00E5B5FA /* SLMeSectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLMeSectionCell.h; sourceTree = "<group>"; };
 		AD2F64C8208385BC00E5B5FA /* SLMeSectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLMeSectionCell.m; sourceTree = "<group>"; };
 		AD2F64CA208386C400E5B5FA /* SLBaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLBaseTableView.h; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				AD2F64C7208385BC00E5B5FA /* SLMeSectionCell.h */,
 				AD2F64C8208385BC00E5B5FA /* SLMeSectionCell.m */,
+				AD1E15E5208C2A75002417E3 /* SLMeSectionCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 			files = (
 				B1B5202E2054431A00B6F9B8 /* MJPhotoBrowser.bundle in Resources */,
 				B1B52006205442D900B6F9B8 /* Assets.xcassets in Resources */,
+				AD1E15E6208C2A75002417E3 /* SLMeSectionCell.xib in Resources */,
 				B1D1B01720568C3C004C0FB6 /* unread_hot_timeline.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
